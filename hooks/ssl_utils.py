@@ -53,8 +53,7 @@ def configure_client_ssl(relation_data):
     relation_data['ssl_port'] = config('ssl_port')
     if external_ca:
         if config('ssl_ca'):
-            relation_data['ssl_ca'] = base64.b64encode(
-                config('ssl_ca'))
+            relation_data['ssl_ca'] = config('ssl_ca')
         return
     ca = ServiceCA.get_ca()
     relation_data['ssl_ca'] = base64.b64encode(ca.get_ca_bundle())
